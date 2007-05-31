@@ -1,6 +1,6 @@
 %define name SDL_sound
 %define version 1.0.1
-%define release %mkrel 12
+%define release %mkrel 13
 %define libname %mklibname %name 1.0
 
 Summary: SDL_sound. An abstract soundfile decoder

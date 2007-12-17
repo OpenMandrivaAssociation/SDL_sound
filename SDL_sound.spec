@@ -13,7 +13,6 @@ Patch1: SDL_sound-1.0.1+flac-1.1.3.patch
 URL: http://www.icculus.org/SDL_sound
 License: LGPL
 Group: Sound
-BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: SDL-devel
 BuildRequires: libflac-devel
 BuildRequires: smpeg-devel >= 0.4.4-23mdk

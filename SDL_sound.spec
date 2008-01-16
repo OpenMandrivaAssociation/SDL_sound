@@ -7,7 +7,7 @@
 Summary:	An abstract SDL soundfile decoder
 Name:		SDL_sound
 Version:	1.0.1
-Release:	%mkrel 15
+Release:	%mkrel 16
 Group:		Sound
 License:	LGPLv2+
 URL:		http://www.icculus.org/SDL_sound
@@ -42,6 +42,7 @@ desires.
 %package -n %{libname}
 Summary:	SDL graphics drawing primitives and other support functions
 Group:		System/Libraries
+Obsoletes:	%{_lib}SDL_sound1.0 < 1.0.1-15
 
 %description -n %{libname}
 SDL_sound is a library that handles the decoding of several popular

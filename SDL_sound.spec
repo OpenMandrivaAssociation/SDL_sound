@@ -3,11 +3,12 @@
 %define libname %mklibname %name %{apiver} %{major}
 %define develname %mklibname %{name} -d
 %define staticname %mklibname %{name} -d -s
+%define oldlibname %mklibname %name 1.0
 
 Summary:	An abstract SDL soundfile decoder
 Name:		SDL_sound
 Version:	1.0.1
-Release:	%mkrel 17
+Release:	%mkrel 18
 Group:		Sound
 License:	LGPLv2+
 URL:		http://www.icculus.org/SDL_sound
@@ -42,7 +43,7 @@ desires.
 %package -n %{libname}
 Summary:	SDL graphics drawing primitives and other support functions
 Group:		System/Libraries
-Obsoletes:	%{_lib}SDL_sound1.0 < 1.0.1-15
+Obsoletes:	%oldlibname < 1.0.1-15
 
 %description -n %{libname}
 SDL_sound is a library that handles the decoding of several popular
@@ -63,7 +64,7 @@ Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Provides:	lib%{name}-devel = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-Obsoletes:	%{_lib}SDL_sound1.0-devel < 1.0.1-13
+Obsoletes:	%oldlibname-devel < 1.0.1-15
 
 %description -n %{develname}
 Header files and more to develop SDL_sound applications.
@@ -72,7 +73,7 @@ Header files and more to develop SDL_sound applications.
 Summary:	Static SDL_sound libraries
 Group:		Development/C
 Requires:	%{develname} = %{version}-%{release}
-Obsoletes:	%{_lib}SDL_sound1.0-static-devel < 1.0.1-13
+Obsoletes:	%oldlibname-static-devel < 1.0.1-15
 
 %description -n %{staticname}
 Static SDL_sound libraries.

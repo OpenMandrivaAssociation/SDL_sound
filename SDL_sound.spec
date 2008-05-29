@@ -7,17 +7,14 @@
 
 Summary:	An abstract SDL soundfile decoder
 Name:		SDL_sound
-Version:	1.0.1
-Release:	%mkrel 18
+Version:	1.0.3
+Release:	%mkrel 1
 Group:		Sound
 License:	LGPLv2+
 URL:		http://www.icculus.org/SDL_sound
-Source:		http://www.icculus.org/SDL_sound/downloads/%{name}-%{version}.tar.bz2
-Patch:		SDL_sound-1.0.1-smpeg.m4.patch
-Patch1:		SDL_sound-1.0.1+flac-1.1.3.patch
+Source:		http://www.icculus.org/SDL_sound/downloads/%{name}-%{version}.tar.gz
 BuildRequires:	SDL-devel
 BuildRequires:	libflac-devel
-BuildRequires:	smpeg-devel >= 0.4.4-23mdk
 BuildRequires:	libmikmod-devel
 BuildRequires:	libmodplug-devel
 BuildRequires:	libvorbis-devel
@@ -80,8 +77,6 @@ Static SDL_sound libraries.
 
 %prep
 %setup -q
-%patch -p1 -b .smpeg
-%patch1 -p1 -b .flac
 aclocal
 automake --foreign
 autoconf
@@ -105,7 +100,7 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 %doc README
-%{_bindir}/playsound
+%{_bindir}/*
 
 %files -n %{libname}
 %defattr(-,root,root)

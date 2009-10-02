@@ -77,9 +77,6 @@ Static SDL_sound libraries.
 
 %prep
 %setup -q
-aclocal
-automake --foreign
-autoconf
 
 %build
 export CPPFLAGS="-I%{_includedir}/libmodplug"

@@ -8,7 +8,7 @@
 Summary:	An abstract SDL soundfile decoder
 Name:		SDL_sound
 Version:	1.0.3
-Release:	%mkrel 5
+Release:	%mkrel 6
 Group:		Sound
 License:	LGPLv2+
 URL:		http://www.icculus.org/SDL_sound

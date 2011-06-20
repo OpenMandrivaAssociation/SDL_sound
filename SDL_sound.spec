@@ -8,7 +8,7 @@
 Summary:	An abstract SDL soundfile decoder
 Name:		SDL_sound
 Version:	1.0.3
-Release:	%mkrel 7
+Release:	%mkrel 8
 Group:		Sound
 License:	LGPLv2+
 URL:		http://www.icculus.org/SDL_sound
@@ -87,6 +87,10 @@ doxygen
 %install
 rm -rf %{buildroot}
 %makeinstall_std
+
+%if "%{_lib}" == "lib64"
+perl -pi -e "s|-L/usr/lib\b|-L%{_libdir}|g" %{buildroot}%{_libdir}/*.la
+%endif
 
 %clean
 rm -rf %{buildroot}

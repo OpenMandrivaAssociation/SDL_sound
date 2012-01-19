@@ -1,14 +1,14 @@
 %define major 1
 %define apiver 1.0
-%define libname %mklibname %name %{apiver} %{major}
+%define libname %mklibname %{name} %{apiver} %{major}
 %define develname %mklibname %{name} -d
 %define staticname %mklibname %{name} -d -s
-%define oldlibname %mklibname %name 1.0
+%define oldlibname %mklibname %{name} 1.0
 
 Summary:	An abstract SDL soundfile decoder
 Name:		SDL_sound
 Version:	1.0.3
-Release:	%mkrel 8
+Release:	%mkrel 9
 Group:		Sound
 License:	LGPLv2+
 URL:		http://www.icculus.org/SDL_sound
@@ -21,7 +21,6 @@ BuildRequires:	libvorbis-devel
 BuildRequires:	libspeex-devel
 BuildRequires:	physfs-devel
 BuildRequires:	doxygen
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 
 %description
 SDL_sound is a library that handles the decoding of several popular
@@ -40,7 +39,7 @@ desires.
 %package -n %{libname}
 Summary:	SDL graphics drawing primitives and other support functions
 Group:		System/Libraries
-Obsoletes:	%oldlibname < 1.0.1-15
+Obsoletes:	%{oldlibname} < 1.0.1-15
 
 %description -n %{libname}
 SDL_sound is a library that handles the decoding of several popular
@@ -61,7 +60,7 @@ Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Provides:	lib%{name}-devel = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-Obsoletes:	%oldlibname-devel < 1.0.1-15
+Obsoletes:	%{oldlibname}-devel < 1.0.1-15
 
 %description -n %{develname}
 Header files and more to develop SDL_sound applications.
@@ -70,7 +69,7 @@ Header files and more to develop SDL_sound applications.
 Summary:	Static SDL_sound libraries
 Group:		Development/C
 Requires:	%{develname} = %{version}-%{release}
-Obsoletes:	%oldlibname-static-devel < 1.0.1-15
+Obsoletes:	%{oldlibname}-static-devel < 1.0.1-15
 
 %description -n %{staticname}
 Static SDL_sound libraries.
@@ -85,7 +84,7 @@ export CPPFLAGS="-I%{_includedir}/libmodplug"
 doxygen
 
 %install
-rm -rf %{buildroot}
+%__rm -rf %{buildroot}
 %makeinstall_std
 
 %if "%{_lib}" == "lib64"
@@ -93,14 +92,7 @@ perl -pi -e "s|-L/usr/lib\b|-L%{_libdir}|g" %{buildroot}%{_libdir}/*.la
 %endif
 
 %clean
-rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
+%__rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
@@ -115,7 +107,9 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc CHANGELOG TODO CREDITS docs/html
 %{_libdir}/lib*.so
+%if %{mdvver} <= 201100
 %attr(644,root,root) %{_libdir}/lib*.la
+%endif
 %{_includedir}/SDL/*
 
 %files -n %{staticname}

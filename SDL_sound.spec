@@ -107,9 +107,7 @@ perl -pi -e "s|-L/usr/lib\b|-L%{_libdir}|g" %{buildroot}%{_libdir}/*.la
 %defattr(-,root,root)
 %doc CHANGELOG TODO CREDITS docs/html
 %{_libdir}/lib*.so
-%if %{mdvver} <= 201100
 %attr(644,root,root) %{_libdir}/lib*.la
-%endif
 %{_includedir}/SDL/*
 
 %files -n %{staticname}

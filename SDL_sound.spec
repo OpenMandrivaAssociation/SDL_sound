@@ -8,17 +8,17 @@
 Summary:	An abstract SDL soundfile decoder
 Name:		SDL_sound
 Version:	1.0.3
-Release:	%mkrel 9
+Release:	10
 Group:		Sound
 License:	LGPLv2+
 URL:		http://www.icculus.org/SDL_sound
 Source:		http://www.icculus.org/SDL_sound/downloads/%{name}-%{version}.tar.gz
-BuildRequires:	SDL-devel
-BuildRequires:	libflac-devel
+BuildRequires:	pkgconfig(sdl)
+BuildRequires:	pkgconfig(flac)
 BuildRequires:	libmikmod-devel
-BuildRequires:	libmodplug-devel
-BuildRequires:	libvorbis-devel
-BuildRequires:	libspeex-devel
+BuildRequires:	pkgconfig(libmodplug)
+BuildRequires:	pkgconfig(vorbis)
+BuildRequires:	pkgconfig(speex)
 BuildRequires:	physfs-devel
 BuildRequires:	doxygen
 
@@ -107,7 +107,6 @@ perl -pi -e "s|-L/usr/lib\b|-L%{_libdir}|g" %{buildroot}%{_libdir}/*.la
 %defattr(-,root,root)
 %doc CHANGELOG TODO CREDITS docs/html
 %{_libdir}/lib*.so
-%attr(644,root,root) %{_libdir}/lib*.la
 %{_includedir}/SDL/*
 
 %files -n %{staticname}

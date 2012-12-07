@@ -1,0 +1,12 @@
+diff -urN SDL_sound-1.0.3/Makefile.in SDL_sound-1.0.3-patched/Makefile.in
+--- SDL_sound-1.0.3/Makefile.in	2008-04-21 07:33:52.000000000 +1100
++++ SDL_sound-1.0.3-patched/Makefile.in	2012-09-29 13:12:04.068126514 +1100
+@@ -351,7 +351,7 @@
+ 	  rm -f "$${dir}/so_locations"; \
+ 	done
+ libSDL_sound.la: $(libSDL_sound_la_OBJECTS) $(libSDL_sound_la_DEPENDENCIES) 
+-	$(LINK) -rpath $(libdir) $(libSDL_sound_la_LDFLAGS) $(libSDL_sound_la_OBJECTS) $(libSDL_sound_la_LIBADD) $(LIBS)
++	$(LINK) -rpath $(libdir) $(libSDL_sound_la_LDFLAGS) $(libSDL_sound_la_OBJECTS) $(libSDL_sound_la_LIBADD) $(LIBS) -lm
+ 
+ mostlyclean-compile:
+ 	-rm -f *.$(OBJEXT)

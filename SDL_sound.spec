@@ -4,6 +4,7 @@
 %define develname %mklibname %{name} -d
 %define staticname %mklibname %{name} -d -s
 %define oldlibname %mklibname %{name} 1.0
+%define _disable_lto 1
 
 Summary:	An abstract SDL soundfile decoder
 Name:		SDL_sound

@@ -23,6 +23,7 @@ BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(speex)
 BuildRequires:	physfs-devel
 BuildRequires:	doxygen
+BuildRequires:	gcc g++
 
 %description
 SDL_sound is a library that handles the decoding of several popular
@@ -80,6 +81,10 @@ Static SDL_sound libraries.
 %autosetup -p1
 
 %build
+# (tpg) 2019-05-05 use gcc
+#BUILDSTDERR: shn.c:1277: error: undefined reference to 'log'
+export CC=gcc
+export CXX=g++
 touch NEWS AUTHORS ChangeLog
 autoreconf -fi
 export CPPFLAGS="-I%{_includedir}/libmodplug -D__EXPORT__="

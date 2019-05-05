@@ -23,7 +23,7 @@ BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(speex)
 BuildRequires:	physfs-devel
 BuildRequires:	doxygen
-BuildRequires:	gcc g++
+BuildRequires:	gcc gcc-c++
 
 %description
 SDL_sound is a library that handles the decoding of several popular

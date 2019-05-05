@@ -9,7 +9,7 @@
 Summary:	An abstract SDL soundfile decoder
 Name:		SDL_sound
 Version:	1.0.3
-Release:	23
+Release:	24
 Group:		Sound
 License:	LGPLv2+
 URL:		http://www.icculus.org/SDL_sound
@@ -77,21 +77,21 @@ Obsoletes:	%{oldlibname}-static-devel < 1.0.1-15
 Static SDL_sound libraries.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
-export CPPFLAGS="-I%{_includedir}/libmodplug"
+touch NEWS AUTHORS ChangeLog
+autoreconf -fi
+export CPPFLAGS="-I%{_includedir}/libmodplug -D__EXPORT__="
 %configure --enable-static
-%make
+%make_build
 doxygen
 
 %install
-%__rm -rf %{buildroot}
-%makeinstall_std
+%make_install
 
 %if "%{_lib}" == "lib64"
-perl -pi -e "s|-L/usr/lib\b|-L%{_libdir}|g" %{buildroot}%{_libdir}/*.la
+sed -i -e "s|-L/usr/lib\b|-L%{_libdir}|g" %{buildroot}%{_libdir}/*.la
 %endif
 
 %files

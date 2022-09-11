@@ -4,12 +4,15 @@
 %define develname %mklibname %{name} -d
 %define staticname %mklibname %{name} -d -s
 %define oldlibname %mklibname %{name} 1.0
+# Because of static lib -- we need object code
+# not LTO data in static libs that might be used
+# by any compiler
 %define _disable_lto 1
 
 Summary:	An abstract SDL soundfile decoder
 Name:		SDL_sound
 Version:	1.0.3
-Release:	25
+Release:	26
 Group:		Sound
 License:	LGPLv2+
 URL:		http://www.icculus.org/SDL_sound

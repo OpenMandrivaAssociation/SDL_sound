@@ -15,7 +15,7 @@ Version:	1.0.3
 Release:	27
 Group:		Sound
 License:	LGPLv2+
-URL:		http://www.icculus.org/SDL_sound
+URL:		https://www.icculus.org/SDL_sound
 Source0:	http://www.icculus.org/SDL_sound/downloads/%{name}-%{version}.tar.gz
 Patch0:		SDL_sound-1.0.3-linkage.patch
 BuildRequires:	pkgconfig(sdl)

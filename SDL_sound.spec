@@ -18,6 +18,11 @@ License:	LGPLv2+
 URL:		https://www.icculus.org/SDL_sound
 Source0:	http://www.icculus.org/SDL_sound/downloads/%{name}-%{version}.tar.gz
 Patch0:		SDL_sound-1.0.3-linkage.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(sdl)
 BuildRequires:	pkgconfig(flac)
 BuildRequires:	libmikmod-devel
